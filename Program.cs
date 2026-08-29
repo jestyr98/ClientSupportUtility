@@ -1,16 +1,13 @@
-﻿using System;
-using System.Runtime.InteropServices;
-
-public class Program
+﻿public class Program
 {
     public static void Main(string[] args)
     {
         const int bannerWidth = 92;
 
+        Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine(value: new string('*', bannerWidth));
         Console.WriteLine(value: new string('*', bannerWidth));
 
-        WriteBannerLine();
         WriteBannerLine("  ____   _   _   ____   _____   _____   __  __    ___   _   _   _____   ___");
         WriteBannerLine(" / ___| | | | | / ___| |_   _| | ____| |  \\/  |  |_ _| | \\ | | |  ___| / _ \\");
         WriteBannerLine(" \\___ \\ | |_| | \\___ \\   | |   |  _|   | |\\/| |   | |  |  \\| | | |_   | | | |");
@@ -20,9 +17,12 @@ public class Program
 
         Console.WriteLine(value: new string('*', bannerWidth));
         Console.WriteLine(value: new string('*', bannerWidth));
+        Console.ResetColor();
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine(value: "jestyr98");
+        Console.ResetColor();
         Console.WriteLine();
-        Console.WriteLine();
+        Menu.ShowMenu();
     }
 
     private static void WriteBannerLine(string text = "")
