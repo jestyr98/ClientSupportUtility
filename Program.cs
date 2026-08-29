@@ -5,22 +5,28 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        Console.WriteLine(value: new string('*', 68));
-        Console.WriteLine(value: new string('*', 68));
+        const int bannerWidth = 92;
 
-        Console.WriteLine(value: "**                                                                **");
-        Console.WriteLine(value: "**   ____  _   _ ____ _____ _____ __  __   ___ _   _ _____ ___    **");
-        Console.WriteLine(value: "**  / ___|| | | / ___|_   _| ____|  \\/  | |_ _| \\ | |  ___/ _ \\   **");
-        Console.WriteLine(value: "**  \\___ \\| |_| \\___ \\ | | |  _| | |\\/| |  | ||  \\| | |_ | | | |  **");
-        Console.WriteLine(value: "**   ___) | |_| |___) || | | |___| |  | |  | || |\\  |  _|| |_| |  **");
-        Console.WriteLine(value: "**  |____/ \\___/|____/ |_| |_____|_|  |_| |___|_| \\_|_|   \\___/   **");
-        Console.WriteLine(value: "**                                                                **");
+        Console.WriteLine(value: new string('*', bannerWidth));
+        Console.WriteLine(value: new string('*', bannerWidth));
 
-        Console.WriteLine(value: new string('*', 68));
-        Console.WriteLine(value: new string('*', 68));
+        WriteBannerLine();
+        WriteBannerLine("  ____   _   _   ____   _____   _____   __  __    ___   _   _   _____   ___");
+        WriteBannerLine(" / ___| | | | | / ___| |_   _| | ____| |  \\/  |  |_ _| | \\ | | |  ___| / _ \\");
+        WriteBannerLine(" \\___ \\ | |_| | \\___ \\   | |   |  _|   | |\\/| |   | |  |  \\| | | |_   | | | |");
+        WriteBannerLine("  ___) | \\__| |  ___) |  | |   | |___  | |  | |   | |  | |\\  | |  _|  | |_| |");
+        WriteBannerLine(" |____/  \\___/  |____/   |_|   |_____| |_|  |_|  |___| |_| \\_| |_|     \\___/");
+        WriteBannerLine();
+
+        Console.WriteLine(value: new string('*', bannerWidth));
+        Console.WriteLine(value: new string('*', bannerWidth));
         Console.WriteLine(value: "jestyr98");
         Console.WriteLine();
         Console.WriteLine();
-        
+    }
+
+    private static void WriteBannerLine(string text = "")
+    {
+        Console.WriteLine($"** {text,-86} **");
     }
 }
