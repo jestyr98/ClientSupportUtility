@@ -1,6 +1,7 @@
-public class Menu
+internal sealed record MenuOption(string Label, Action Action);
+internal static class Menu
 {
-    public static void ShowMenu()
+    public static void Show(params MenuOption[] options)
     {
         ConsoleKeyInfo key;
         int selection = 1;
@@ -9,18 +10,19 @@ public class Menu
 
         // Enter Key emoji from https://emoj.info/enter-key
         Console.WriteLine("Use ⬆️  or ⬇️  to navigate.  Press \u001b[32m⏎\u001b[0m to select an option.");
+        Console.WriteLine();
 
         while(!isSelected)
         {
             if (hasRenderedMenu)
             {
-                Console.Write("\u001b[4A");
+                Console.Write($"\u001b[{options.Length}A");
             }
 
-            WriteMenuItem("Software", selection == 1);
-            WriteMenuItem("Hardware", selection == 2);
-            WriteMenuItem("Networking", selection == 3);
-            WriteMenuItem("Exit", selection == 4);
+            for (int i = 0; i < options.Length; i++)
+            {
+                WriteMenuItem(options[i].Label, selection == i + 1);
+            }
             hasRenderedMenu = true;
 
             key = Console.ReadKey(intercept: true);
@@ -29,11 +31,11 @@ public class Menu
             {
                 case ConsoleKey.DownArrow:
                     selection++;
-                    if(selection > 4) selection = 1;
+                    if(selection > options.Length) selection = 1;
                     break;
                 case ConsoleKey.UpArrow:
                     selection--;
-                    if(selection < 1) selection = 4;
+                    if(selection < 1) selection = options.Length;
                     break;
                 case ConsoleKey.Enter:
                     isSelected = true;
@@ -41,7 +43,7 @@ public class Menu
             }
         }
 
-        Console.WriteLine($"You selected option {selection}");
+        options[selection - 1].Action();
     }
 
     private static void WriteMenuItem(string label, bool isSelected)
