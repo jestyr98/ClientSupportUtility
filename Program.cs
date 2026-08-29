@@ -27,6 +27,6 @@ public class Program
 
     private static void WriteBannerLine(string text = "")
     {
-        Console.WriteLine($"** {text,-86} **");
+        Console.WriteLine($"****** {text,-78} ******");
     }
 }

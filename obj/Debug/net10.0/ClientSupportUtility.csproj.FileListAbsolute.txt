@@ -12,3 +12,4 @@ C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\refint
 C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\ClientSupportUtility.pdb
 C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\ClientSupportUtility.genruntimeconfig.cache
 C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\ref\ClientSupportUtility.dll
+C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\ClientSupportUtility.sourcelink.json
