@@ -19,7 +19,7 @@
         Console.WriteLine(value: new string('*', bannerWidth));
         Console.ResetColor();
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine(value: "jestyr98");
+        Console.WriteLine(value: "Author: jestyr98☠️");
         Console.ResetColor();
         Console.WriteLine();
         Menu.ShowMenu();
