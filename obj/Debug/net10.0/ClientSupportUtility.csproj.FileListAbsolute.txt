@@ -1,0 +1,14 @@
+C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\ClientSupportUtility.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\ClientSupportUtility.AssemblyInfoInputs.cache
+C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\ClientSupportUtility.AssemblyInfo.cs
+C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\ClientSupportUtility.csproj.CoreCompileInputs.cache
+C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\bin\Debug\net10.0\ClientSupportUtility.exe
+C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\bin\Debug\net10.0\ClientSupportUtility.deps.json
+C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\bin\Debug\net10.0\ClientSupportUtility.runtimeconfig.json
+C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\bin\Debug\net10.0\ClientSupportUtility.dll
+C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\bin\Debug\net10.0\ClientSupportUtility.pdb
+C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\ClientSupportUtility.dll
+C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\refint\ClientSupportUtility.dll
+C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\ClientSupportUtility.pdb
+C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\ClientSupportUtility.genruntimeconfig.cache
+C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\ref\ClientSupportUtility.dll
