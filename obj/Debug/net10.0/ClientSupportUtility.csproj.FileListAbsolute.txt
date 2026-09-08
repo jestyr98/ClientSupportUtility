@@ -2,7 +2,6 @@ C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\Client
 C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\ClientSupportUtility.AssemblyInfoInputs.cache
 C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\ClientSupportUtility.AssemblyInfo.cs
 C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\ClientSupportUtility.csproj.CoreCompileInputs.cache
-C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\bin\Debug\net10.0\ClientSupportUtility.exe
 C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\bin\Debug\net10.0\ClientSupportUtility.deps.json
 C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\bin\Debug\net10.0\ClientSupportUtility.runtimeconfig.json
 C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\bin\Debug\net10.0\ClientSupportUtility.dll
@@ -13,3 +12,8 @@ C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\Client
 C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\ClientSupportUtility.genruntimeconfig.cache
 C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\ref\ClientSupportUtility.dll
 C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Debug\net10.0\ClientSupportUtility.sourcelink.json
+C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Validation\ClientSupportUtility.deps.json
+C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Validation\ClientSupportUtility.runtimeconfig.json
+C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Validation\ClientSupportUtility.dll
+C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\obj\Validation\ClientSupportUtility.pdb
+C:\Users\jkins\source\repos\CSharp\ClientSupportUtility\bin\Debug\net10.0\ClientSupportUtility.exe

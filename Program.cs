@@ -26,12 +26,14 @@ public class Program
         switch (GetOSPlatform())
         {
             case var platform when platform == OSPlatform.Windows:
+#pragma warning disable CA1416 // guarded by the OSPlatform.Windows check above
                 Menu.Show(
                     new MenuOption("Software", WinSoftwareMenu.Show),
                     new MenuOption("Hardware", HardwareMenu.Show),
                     new MenuOption("Networking", NetworkingMenu.Show),
                     new MenuOption("Exit", () => Environment.Exit(0))
                 );
+#pragma warning restore CA1416
                 break;
             // case var platform when platform == OSPlatform.Linux:
             //     Menu.Show(
