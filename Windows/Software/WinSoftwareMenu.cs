@@ -18,7 +18,8 @@ internal static class WinSoftwareMenu
                 new MenuOption("Hardware", HardwareMenu.Show),
                 new MenuOption("Networking", NetworkingMenu.Show),
                 new MenuOption("Exit", () => Environment.Exit(0))
-            ))
+            )),
+            new MenuOption("Exit", () => Environment.Exit(0))
         );
     }
 

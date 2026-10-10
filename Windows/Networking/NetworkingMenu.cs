@@ -1,11 +1,10 @@
 using System;
-using System.Net;
+using System.Linq;
 using System.Net.NetworkInformation;
-using System.Diagnostics;
-using System.Globalization;
 using System.Runtime.Versioning;
-using System.Text.RegularExpressions;
-using Microsoft.Win32;
+using System.Collections.Generic;
+
+
 
 [SupportedOSPlatform("windows")]
 internal static class NetworkingMenu
@@ -13,22 +12,47 @@ internal static class NetworkingMenu
     public static void Show()
     {
         Menu.Show(
-            new MenuOption("Performance", () => { GetNetworkPerformance(); }),
-            new MenuOption("Diagnostics", () => { GetNetworkDiagnostics(); }),
-            new MenuOption("Display Active Interfaces", () => { DisplayActiveInterfaces(); }),
-            new MenuOption("Open/Closed Ports", () => { GetOpenClosedPorts(); }),
-            new MenuOption("Exit", () => { Environment.Exit(0); })
+            new MenuOption("Performance", () => { GetNetworkPerformance(); Show(); }),
+            new MenuOption("Diagnostics", () => { GetNetworkDiagnostics(GetActiveNetworkAdapters()); Show(); }),
+            new MenuOption("Display Active Interfaces", () => { DisplayActiveInterfaces(); Show(); }),
+            new MenuOption("Open/Closed Ports", () => { GetOpenClosedPorts(); Show(); }),
+            new MenuOption("Back", () => Menu.Show(
+                new MenuOption("Software", WinSoftwareMenu.Show),
+                new MenuOption("Hardware", HardwareMenu.Show),
+                new MenuOption("Networking", Show),
+                new MenuOption("Exit", () => Environment.Exit(0))
+            )),
+            new MenuOption("Exit", () => Environment.Exit(0))
         );
     }
 
     private static void GetNetworkPerformance()
     {
-        // Get network performance logic here
+        
     }
 
-    private static void GetNetworkDiagnostics()
+    private static void GetNetworkDiagnostics(List<NetworkInterface> activeAdapters)
     {
-        // Get network diagnostics logic here
+        var wirelessAdapters = activeAdapters
+            .Where(adapter => adapter.NetworkInterfaceType == NetworkInterfaceType.Wireless80211)
+            .ToList();
+
+        if (wirelessAdapters.Count == 0)
+        {
+            Console.WriteLine("No active wireless adapters found.");
+            return;
+        }
+
+        Console.WriteLine("Active wireless adapters:");
+        foreach (var adapter in wirelessAdapters)
+        {
+            Console.WriteLine($"- {adapter.Name}: {adapter.Description}");
+        }
+
+        if (ShowWLanReport.RunNetshWlanShowReport())
+        {
+            ShowWLanReport.ShowReportHtml();
+        }
     }
 
     private static void DisplayActiveInterfaces()
@@ -40,4 +64,26 @@ internal static class NetworkingMenu
     {
         // Get open/closed ports logic here
     }
+
+    private static List<NetworkInterface> GetActiveNetworkAdapters()
+    {
+        var adapters = NetworkInterface.GetAllNetworkInterfaces()
+            .Where(ni => ni.OperationalStatus == OperationalStatus.Up)
+            .ToList();
+        return adapters;
+    }
+
+    private static bool IsVPN()
+    {
+        var adapters = GetActiveNetworkAdapters();
+        foreach (var adapter in adapters)
+        {
+            if (adapter.NetworkInterfaceType == NetworkInterfaceType.Tunnel)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
