@@ -5,6 +5,7 @@ using System.IO;
 using System.ComponentModel;
 using System.Security.Principal;
 using System.Runtime.Versioning;
+using System.Threading;
 
 [SupportedOSPlatform("windows")]
 internal static class ShowWLanReport
@@ -42,13 +43,18 @@ internal static class ShowWLanReport
                 Console.WriteLine($"Error: {error}");
             }
 
-            if (process.ExitCode != 0)
+            if (WaitForReportFile())
             {
-                Console.WriteLine($"netsh exited with code {process.ExitCode}; the WLAN report was not generated.");
-                return false;
+                if (process.ExitCode != 0)
+                {
+                    Console.WriteLine($"netsh exited with code {process.ExitCode}, but the WLAN report was generated.");
+                }
+
+                return true;
             }
 
-            return true;
+            Console.WriteLine($"The WLAN report was not found at: {GetReportPath()}");
+            return false;
         }
         catch (Win32Exception ex) when (ex.NativeErrorCode == 1223)
         {
@@ -83,12 +89,22 @@ internal static class ShowWLanReport
         }
 
         process.WaitForExit();
+        if (WaitForReportFile())
+        {
+            if (process.ExitCode != 0)
+            {
+                Console.WriteLine($"netsh exited with code {process.ExitCode}, but the WLAN report was generated.");
+            }
+
+            return true;
+        }
+
         if (process.ExitCode != 0)
         {
             throw new InvalidOperationException($"Elevated netsh exited with code {process.ExitCode}.");
         }
 
-        return true;
+        throw new InvalidOperationException($"netsh completed, but the WLAN report was not found at: {GetReportPath()}");
     }
 
     private static bool IsRunningElevated()
@@ -99,24 +115,21 @@ internal static class ShowWLanReport
 
     public static void ShowReportHtml()
     {
-        string htmlFilePath = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),
-            "Microsoft",
-            "Windows",
-            "WlanReport",
-            "wlan-report-latest.html");
+        string htmlFilePath = GetReportPath();
         if (!File.Exists(htmlFilePath))
         {
-            Console.WriteLine($"File not found: {htmlFilePath}");
+            Console.WriteLine($"The WLAN report was not found at: {htmlFilePath}");
             return;
         }
 
         try
         {
+            Console.WriteLine($"Opening WLAN report: {htmlFilePath}");
             Process.Start(new ProcessStartInfo
             {
-                FileName = htmlFilePath,
-                UseShellExecute = true
+                FileName = "explorer.exe",
+                Arguments = $"\"{htmlFilePath}\"",
+                UseShellExecute = false
             });
         }
         catch (Exception ex)
@@ -127,5 +140,31 @@ internal static class ShowWLanReport
 
         Console.WriteLine("The WLAN report is open. Close it, then press Enter to return to the app.");
         Console.ReadLine();
+    }
+
+    private static string GetReportPath()
+    {
+        return Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),
+            "Microsoft",
+            "Windows",
+            "WlanReport",
+            "wlan-report-latest.html");
+    }
+
+    private static bool WaitForReportFile()
+    {
+        const int attempts = 10;
+        for (var attempt = 0; attempt < attempts; attempt++)
+        {
+            if (File.Exists(GetReportPath()))
+            {
+                return true;
+            }
+
+            Thread.Sleep(500);
+        }
+
+        return false;
     }
 }
