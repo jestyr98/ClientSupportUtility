@@ -5,7 +5,7 @@ public class Program
     {
         const int bannerWidth = 92;
 
-        Console.ForegroundColor = ConsoleColor.Green;
+        Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine(value: new string('*', bannerWidth));
         Console.WriteLine(value: new string('*', bannerWidth));
 
@@ -19,7 +19,7 @@ public class Program
         Console.WriteLine(value: new string('*', bannerWidth));
         Console.WriteLine(value: new string('*', bannerWidth));
         Console.ResetColor();
-        Console.ForegroundColor = ConsoleColor.Red;
+        Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine(value: "Author: jestyr98☠️");
         Console.ResetColor();
         Console.WriteLine();
